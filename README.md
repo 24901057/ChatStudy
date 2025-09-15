@@ -72,6 +72,55 @@ User authentication mechanisms are essential to ensure secure and authorized acc
 Client-server chat applications are versatile tools that facilitate real-time communication between users over a network. They incorporate various components, including server-side and client-side elements, and must consider factors such as security, scalability, and concurrency. As technology continues to advance, client-server chat applications remain integral for collaborative communication in various domains.
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
+## Client program:
+```python
+import socket
+
+host = "10.173.80.188"  
+port = 12345           
+
+s = socket.socket()
+s.connect((host, port))
+print("Connected to server\n")
+
+while True:
+    incoming_message = s.recv(1024).decode()
+    print("Server:", incoming_message, "\n")
+
+    message = input(">> ")
+    s.send(message.encode())
+
+```
+## Server program:
+```python
+import socket
+
+host = "10.173.80.188"   
+port = 12345          
+s = socket.socket()
+s.bind((host, port))
+s.listen(1)
+
+print(f"Server started on {host}:{port}")
+print("Waiting for connection...\n")
+
+conn, addr = s.accept()
+print(addr, "has connected to the server\n")
+
+while True:
+    message = input(">> ")
+    conn.send(message.encode())
+    print("Sent\n")
+
+    incoming_message = conn.recv(1024).decode()
+    print("Client:", incoming_message, "\n")
+
+```
+## Client output:
+<img width="735" height="321" alt="image" src="https://github.com/user-attachments/assets/5775e83c-db7b-41c1-8e22-c53ff82c2864" />
+
+## server output:
+<img width="750" height="371" alt="image" src="https://github.com/user-attachments/assets/a604254c-42e2-4519-94ea-1f8e8b4f64cc" />
 
 
 ## Result:
