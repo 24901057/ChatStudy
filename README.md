@@ -1,5 +1,6 @@
 # Ex. No:1b 			Study of Client Server Chat Applications
-
+# NAME: THEJASHREE S
+# REG NO: 212224240175
 ## Aim: 
 To perform a study on Client Server Chat Applications
 ## Introduction:
